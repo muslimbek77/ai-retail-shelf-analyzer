@@ -41,7 +41,7 @@ export default function App() {
         {error && <p className="error">{error}</p>}
       </form>
     </section>
-    {result && <section className="card result"><div><span className="eyebrow">NATIJA</span><h2>{result.detections.length} ta obyekt topildi</h2><p>{result.filename}</p></div><img className="result-image" src={`${API}${result.result_image_url}`} alt="Aniqlangan obyektlar" /><div className="detections">{result.detections.map((d, i) => <div className="detection" key={i}><strong>{d.label}</strong><span>{(d.confidence * 100).toFixed(1)}%</span></div>)}</div></section>}
+    {result && <section className="card result"><div><span className="eyebrow">NATIJA</span><h2>{result.detections.length} ta mahsulot qutisi aniqlandi</h2><p>{result.filename}</p><p className="note">Bu model aniqlagan qutilar soni. Confidence balli aniqlik kafolati yoki mahsulot turi emas.</p></div><img className="result-image" src={`${API}${result.result_image_url}`} alt="Javondagi aniqlangan mahsulot qutilari" /></section>}
     <section className="history"><div className="section-heading"><div><span className="eyebrow">LOYIHA TARIXI</span><h2>So‘nggi tahlillar</h2></div><button className="refresh" onClick={loadHistory}>Yangilash</button></div>
       {history.length ? <div className="history-grid">{history.map(item => <article className="history-item" key={item.id}><img src={`${API}${item.result_image_url}`} alt="Tahlil natijasi" /><div><strong>{item.filename}</strong><span>{item.detections_count} ta obyekt</span></div></article>)}</div> : <p className="empty">Hozircha tahlillar yo‘q.</p>}
     </section>

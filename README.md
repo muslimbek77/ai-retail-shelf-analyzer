@@ -51,3 +51,15 @@ DATABASE_URL='postgresql+psycopg://user:password@localhost:5432/shelf_analyzer' 
 - `GET /health` — xizmat holati.
 
 Standart model javondagi mahsulotlarni alohida `mahsulot` obyektlari sifatida aniqlaydi, lekin SKU/brend nomlarini tanimaydi. Muayyan mahsulot nomi yoki turini aniqlash uchun o‘z mahsulotlaringiz bilan o‘qitilgan model kerak. Boshqa lokal Ultralytics vazn faylini ishlatish uchun `YOLO_MODEL=/path/to/model.pt` deb belgilang.
+
+Deteksiya parametrlarini muhit o‘zgaruvchilari bilan sozlash mumkin: `YOLO_CONFIDENCE` (standart `0.35`), `YOLO_IMAGE_SIZE` (standart `960`) va `YOLO_MAX_DETECTIONS` (standart `1000`). Confidence — model balli, aniqlik foizi emas. Haqiqiy inventar sonini tasdiqlash uchun modelni maqsadli javon rasmlarida baholash kerak.
+
+## Keyingi bosqichlar
+
+1. Object detection va qutilarni sanash — hozir: javondagi mahsulot qutilari aniqlanadi, API/UI sonini ko‘rsatadi.
+2. Mahsulot klassifikatsiyasi — SKU/brend katalogi yoki mahsulot rasmlari bilan ulash.
+3. Inventory hisoboti — aniqlangan SKU bo‘yicha sonlarni guruhlash va tarix bilan solishtirish.
+4. Bo‘sh javon joylari — shelf qatorlarini belgilash va bandlik xaritasini hisoblash.
+5. Planogramma — kutilgan SKU/joylashuv jadvali bilan aniqlangan javonni solishtirish.
+
+Mahsulot katalogi va etalon planogramma bo‘lmagani uchun 2–5 bosqichlar hozircha ma’lumot talab qiladi; tizimda hozircha faqat umumiy mahsulot qutilari sanaladi.

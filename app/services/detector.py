@@ -4,7 +4,12 @@ from pathlib import Path
 from huggingface_hub import hf_hub_download
 from ultralytics import YOLO
 
-from app.config import MODEL_PATH
+from app.config import (
+    DETECTION_CONFIDENCE,
+    DETECTION_IMAGE_SIZE,
+    DETECTION_MAX_BOXES,
+    MODEL_PATH,
+)
 
 
 @lru_cache(maxsize=1)
@@ -22,7 +27,12 @@ def detect(image_path: Path) -> tuple[list[dict], object]:
     """Return normalized detections and an annotated BGR image."""
     model = get_model()
     result = model.predict(
-        source=str(image_path), conf=0.25, iou=0.55, imgsz=960, verbose=False
+        source=str(image_path),
+        conf=DETECTION_CONFIDENCE,
+        iou=0.55,
+        imgsz=DETECTION_IMAGE_SIZE,
+        max_det=DETECTION_MAX_BOXES,
+        verbose=False,
     )[0]
     names = result.names
     detections = []
@@ -35,4 +45,7 @@ def detect(image_path: Path) -> tuple[list[dict], object]:
             "confidence": round(float(box.conf.item()), 4),
             "box": coords,
         })
-    return detections, result.plot()
+    # Keep boxes readable on dense shelves. Repeated class/confidence labels
+    # overlap heavily and do not add useful information for this single-class model.
+    annotated = result.plot(labels=False, conf=False, line_width=2)
+    return detections, annotated
