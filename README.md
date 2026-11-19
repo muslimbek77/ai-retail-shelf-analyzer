@@ -52,6 +52,10 @@ DATABASE_URL='postgresql+psycopg://user:password@localhost:5432/shelf_analyzer' 
 - `DELETE /api/products/{id}` — katalog mahsulotini o‘chirish.
 - `GET /results/{filename}` — chizilgan natija rasmini olish.
 - `GET /catalog-images/{filename}` — katalog etalon rasmini olish.
+
+## Test rasmlari
+
+`test_images/` ichida to‘liq, bo‘sh joyli va zich mahsulotli javon uchun uchta sintetik test rasmi bor. Tavsif va API misoli papkadagi README’da berilgan.
 - `GET /health` — xizmat holati.
 
 Standart model javondagi mahsulotlarni alohida `mahsulot` obyektlari sifatida aniqlaydi, lekin SKU/brend nomlarini tanimaydi. Muayyan mahsulot nomi yoki turini aniqlash uchun o‘z mahsulotlaringiz bilan o‘qitilgan model kerak. Boshqa lokal Ultralytics vazn faylini ishlatish uchun `YOLO_MODEL=/path/to/model.pt` deb belgilang.
