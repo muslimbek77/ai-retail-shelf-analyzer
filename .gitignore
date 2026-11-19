@@ -1,0 +1,11 @@
+venv/
+__pycache__/
+*.py[cod]
+*.db
+.env
+node_modules/
+frontend/dist/
+uploads/*
+!uploads/.gitkeep
+results/*
+!results/.gitkeep

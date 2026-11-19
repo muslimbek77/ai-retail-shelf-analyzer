@@ -1,0 +1,9 @@
+fastapi
+uvicorn[standard]
+python-multipart
+ultralytics
+opencv-python
+pillow
+numpy
+SQLAlchemy>=2.0,<3.0
+psycopg[binary]>=3.2,<4.0
