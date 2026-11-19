@@ -5,7 +5,6 @@ services:
       - "8000:8000"
     environment:
       DATABASE_URL: postgresql+psycopg://shelf:shelf@db:5432/shelf_analyzer
-      YOLO_MODEL: yolov8n.pt
     volumes:
       - ./uploads:/app/uploads
       - ./results:/app/results

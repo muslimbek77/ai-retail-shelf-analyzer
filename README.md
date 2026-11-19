@@ -10,7 +10,7 @@ Docker va Docker Compose o‘rnatilgan bo‘lishi kerak:
 docker compose up --build
 ```
 
-Birinchi ishga tushishda Ultralytics `yolov8n.pt` modelini yuklab oladi. Keyin:
+Birinchi tahlilda javon mahsulotlariga mos SKU-110K YOLO modeli Hugging Face’dan yuklanadi; buning uchun internet kerak. Keyin:
 
 - Frontend: http://localhost:5173
 - API hujjatlari: http://localhost:8000/docs
@@ -50,4 +50,4 @@ DATABASE_URL='postgresql+psycopg://user:password@localhost:5432/shelf_analyzer' 
 - `GET /results/{filename}` — chizilgan natija rasmini olish.
 - `GET /health` — xizmat holati.
 
-Modelni almashtirish uchun `YOLO_MODEL` o‘zgaruvchisiga Ultralytics model nomi yoki model fayli yo‘lini bering. Model natijalari umumiy COCO sinflariga asoslanadi; mahsulot turlari bo‘yicha aniq hisob uchun javon mahsulotlarida fine-tune qilingan model kerak bo‘ladi.
+Standart model javondagi mahsulotlarni alohida `mahsulot` obyektlari sifatida aniqlaydi, lekin SKU/brend nomlarini tanimaydi. Muayyan mahsulot nomi yoki turini aniqlash uchun o‘z mahsulotlaringiz bilan o‘qitilgan model kerak. Boshqa lokal Ultralytics vazn faylini ishlatish uchun `YOLO_MODEL=/path/to/model.pt` deb belgilang.

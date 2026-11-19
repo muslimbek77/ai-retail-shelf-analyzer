@@ -7,7 +7,7 @@ RESULT_DIR = Path(os.getenv("RESULT_DIR", BASE_DIR / "results"))
 DATABASE_URL = os.getenv(
     "DATABASE_URL", "sqlite:///./shelf_analyzer.db"
 )
-MODEL_PATH = os.getenv("YOLO_MODEL", "yolov8n.pt")
+MODEL_PATH = os.getenv("YOLO_MODEL")
 MAX_UPLOAD_BYTES = int(os.getenv("MAX_UPLOAD_BYTES", 15 * 1024 * 1024))
 ALLOWED_CONTENT_TYPES = {"image/jpeg", "image/png", "image/webp"}
 
