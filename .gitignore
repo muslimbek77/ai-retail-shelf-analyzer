@@ -2,6 +2,7 @@ venv/
 __pycache__/
 *.py[cod]
 *.db
+*.pt
 .env
 node_modules/
 frontend/dist/
@@ -9,3 +10,5 @@ uploads/*
 !uploads/.gitkeep
 results/*
 !results/.gitkeep
+catalog_images/*
+!catalog_images/.gitkeep

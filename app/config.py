@@ -4,6 +4,7 @@ from pathlib import Path
 BASE_DIR = Path(__file__).resolve().parent.parent
 UPLOAD_DIR = Path(os.getenv("UPLOAD_DIR", BASE_DIR / "uploads"))
 RESULT_DIR = Path(os.getenv("RESULT_DIR", BASE_DIR / "results"))
+CATALOG_DIR = Path(os.getenv("CATALOG_DIR", BASE_DIR / "catalog_images"))
 DATABASE_URL = os.getenv(
     "DATABASE_URL", "sqlite:///./shelf_analyzer.db"
 )
@@ -16,3 +17,4 @@ ALLOWED_CONTENT_TYPES = {"image/jpeg", "image/png", "image/webp"}
 
 UPLOAD_DIR.mkdir(parents=True, exist_ok=True)
 RESULT_DIR.mkdir(parents=True, exist_ok=True)
+CATALOG_DIR.mkdir(parents=True, exist_ok=True)

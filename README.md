@@ -16,7 +16,7 @@ Birinchi tahlilda javon mahsulotlariga mos SKU-110K YOLO modeli Hugging Face’d
 - API hujjatlari: http://localhost:8000/docs
 - Health check: http://localhost:8000/health
 
-Yuklangan rasmlar `uploads/`, chizilgan natijalar `results/`, PostgreSQL ma’lumotlari Docker volume’da saqlanadi.
+Yuklangan tahlil rasmlari `uploads/`, chizilgan natijalar `results/`, katalog etalonlari `catalog_images/`, PostgreSQL ma’lumotlari Docker volume’da saqlanadi.
 
 ## Lokal ishga tushirish
 
@@ -47,7 +47,11 @@ DATABASE_URL='postgresql+psycopg://user:password@localhost:5432/shelf_analyzer' 
 
 - `POST /api/analyses` — `file` nomli multipart rasm maydonini yuborib tahlil qilish.
 - `GET /api/analyses?limit=20` — oxirgi tahlillar tarixi.
+- `GET /api/products` — etalon mahsulotlar katalogi.
+- `POST /api/products` — `name`, `category`, ixtiyoriy `brand`/`package_size` va `reference_image` multipart maydonlari bilan katalogga mahsulot qo‘shish.
+- `DELETE /api/products/{id}` — katalog mahsulotini o‘chirish.
 - `GET /results/{filename}` — chizilgan natija rasmini olish.
+- `GET /catalog-images/{filename}` — katalog etalon rasmini olish.
 - `GET /health` — xizmat holati.
 
 Standart model javondagi mahsulotlarni alohida `mahsulot` obyektlari sifatida aniqlaydi, lekin SKU/brend nomlarini tanimaydi. Muayyan mahsulot nomi yoki turini aniqlash uchun o‘z mahsulotlaringiz bilan o‘qitilgan model kerak. Boshqa lokal Ultralytics vazn faylini ishlatish uchun `YOLO_MODEL=/path/to/model.pt` deb belgilang.

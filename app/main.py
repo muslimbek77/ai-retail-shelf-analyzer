@@ -5,7 +5,8 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 
 from app.api.analyses import router as analyses_router
-from app.config import RESULT_DIR
+from app.api.products import router as products_router
+from app.config import CATALOG_DIR, RESULT_DIR
 from app.database import Base, engine
 from app import models  # noqa: F401 - registers ORM models
 
@@ -26,7 +27,9 @@ app.add_middleware(
     allow_headers=["*"],
 )
 app.mount("/results", StaticFiles(directory=RESULT_DIR), name="results")
+app.mount("/catalog-images", StaticFiles(directory=CATALOG_DIR), name="catalog-images")
 app.include_router(analyses_router)
+app.include_router(products_router)
 
 
 @app.get("/health")
